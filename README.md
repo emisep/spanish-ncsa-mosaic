@@ -1,25 +1,25 @@
-NCSA Mosaic
+NCSA Mosaic en español
+(Texto original por alandipert)
 ===========
 
-![GitHub viewed with Mosaic](http://github.com/downloads/alandipert/ncsa-mosaic/github.png "GitHub with Mosaic")
+![GitHub visto con Mosaic](http://github.com/downloads/alandipert/ncsa-mosaic/github.png "GitHub con Mosaic")
 
-This is NCSA Mosaic 2.7, one of the first graphical web browsers.
-If you're on Ubuntu or something like it, your time machine is fueled
-up and ready to go.  Follow the instructions below to build and run.
+Aquí está NCSA Mosaic 2.7, uno de los primeros navegadores web con interfaz gráfica.
+Si utilizas Ubuntu o algo por el estilo, tu máquina del tiempo está lista para partir, sólo sigue las instrucciones más abajo para podercompilar e iniciar el programa.
 
-Many thanks to [Sean MacLennan and Alan Wylie](http://seanm.ca/mosaic/) for doing the heavy lifting.  And, of course, hats off to Marc Andreessen, Eric Bina, and the rest of the [NCSA](http://www.ncsa.illinois.edu/) team for kicking things off for us.  Thanks!
+Muchas gracias a [Sean MacLennan y Alan Wylie](http://seanm.ca/mosaic/) por hacer el trabajo duro, y, por supuesto, nos sacamos el sombrero en honor a Marc Andreessen, Eric Bina y el resto del equipo de desarrolladores de [NCSA](http://www.ncsa.illinois.edu/) que dieron un gran golpe.  ¡Muchas gracias!
 
-Building
+Compilar
 --------
 
-* First, install these packages:
+* Primero, instala estos paquetes:
 
       sudo apt-get install build-essential libmotif-dev libjpeg62-dev libpng12-dev x11proto-print-dev libxmu-headers libxpm-dev libxmu-dev
 
-* Next, build with:
+* Luego, comienza a compilar con:
 
       make linux
 
-* Run!
+* ... y arranca!
 
       src/Mosaic
