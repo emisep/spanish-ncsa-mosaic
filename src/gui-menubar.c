@@ -145,7 +145,7 @@ static void mo_post_exitbox (void)
         {
           exitbox = XmxMakeQuestionDialog
             (toplevel, "Are you sure you want to exit NCSA Mosaic?" ,
-             "NCSA Mosaic: Exit Confirmation" , exit_confirm_cb, 1, 0);
+             "NCSA Mosaic: Confirmar salida" , exit_confirm_cb, 1, 0);
           XtManageChild (exitbox);
         }
       else
@@ -1479,8 +1479,8 @@ char buf[BUFSIZ];
 
 /* --------------------------- format options ------------------------------ */
 	ALLOC_OPTIONS(format_opts,5)
-	DEFINE_OPTIONS("Plain Text",mo_plaintext,XmxNotSet)
-	DEFINE_OPTIONS("Formatted Text",mo_formatted_text,XmxNotSet)
+	DEFINE_OPTIONS("Texto plano",mo_plaintext,XmxNotSet)
+	DEFINE_OPTIONS("Texto con formato",mo_formatted_text,XmxNotSet)
 	DEFINE_OPTIONS("PostScript",mo_postscript,XmxNotSet)
 	DEFINE_OPTIONS("HTML",mo_html,XmxNotSet)
 	NULL_OPTIONS()
@@ -1495,11 +1495,11 @@ char buf[BUFSIZ];
 /* ----------------------- full menubar interface -------------------------- */
 	/* File Menu */
 	ALLOC_MENUBAR(file_menuspec,32)
-	DEFINE_MENUBAR("New" ,"N" ,menubar_cb,mo_new_window,NULL)
-	DEFINE_MENUBAR("Clone" ,"C",menubar_cb,mo_clone_window,NULL)
+	DEFINE_MENUBAR("Nuevo" ,"N" ,menubar_cb,mo_new_window,NULL)
+	DEFINE_MENUBAR("Clonar" ,"C",menubar_cb,mo_clone_window,NULL)
 	SPACER()
-	DEFINE_MENUBAR("Open URL..." ,"O",menubar_cb,mo_open_document,NULL)
-	DEFINE_MENUBAR("Open Local..." ,"L",menubar_cb,mo_open_local_document,NULL)
+	DEFINE_MENUBAR("Abrir URL..." ,"O",menubar_cb,mo_open_document,NULL)
+	DEFINE_MENUBAR("Abrir local..." ,"L",menubar_cb,mo_open_local_document,NULL)
 	SPACER()
 	DEFINE_MENUBAR("Reload Current" ,"R",menubar_cb,mo_reload_document,NULL)
 	DEFINE_MENUBAR("Reload Images" ,"a",menubar_cb,mo_reload_document_and_images,NULL)
@@ -1509,9 +1509,9 @@ char buf[BUFSIZ];
 	DEFINE_MENUBAR("View Source..." ,"V",menubar_cb,mo_document_source,NULL)
 	DEFINE_MENUBAR("Edit Source..." ,"E",menubar_cb,mo_document_edit,NULL)
 	SPACER()
-	DEFINE_MENUBAR("Save As..." ,"S",menubar_cb,mo_save_document,NULL)
-	DEFINE_MENUBAR("Print..." ,"P",menubar_cb,mo_print_document,NULL)
-	DEFINE_MENUBAR("Mail To..." ,"M",menubar_cb,mo_mail_document,NULL)
+	DEFINE_MENUBAR("Guardar como..." ,"S",menubar_cb,mo_save_document,NULL)
+	DEFINE_MENUBAR("Imprimir..." ,"P",menubar_cb,mo_print_document,NULL)
+	DEFINE_MENUBAR("Enviar a..." ,"M",menubar_cb,mo_mail_document,NULL)
 	SPACER()
 	DEFINE_MENUBAR("CCI..." ,"D",menubar_cb,mo_cci,NULL)
 #ifdef HAVE_DTM
@@ -1626,10 +1626,10 @@ char buf[BUFSIZ];
 
 	/* Help Menu */
 	ALLOC_MENUBAR(help_menuspec,17)
-	DEFINE_MENUBAR("About..." ,"A",menubar_cb,mo_help_about,NULL)
+	DEFINE_MENUBAR("Acerca de..." ,"A",menubar_cb,mo_help_about,NULL)
 	DEFINE_MENUBAR("Manual..." ,"M",menubar_cb,mo_mosaic_manual,NULL)
 	SPACER()
-	DEFINE_MENUBAR("What's New..." ,"W",menubar_cb,mo_whats_new,NULL)
+	DEFINE_MENUBAR("Novedades..." ,"W",menubar_cb,mo_whats_new,NULL)
 	DEFINE_MENUBAR("Demo..." ,"D",menubar_cb,mo_mosaic_demopage,NULL)
 	SPACER()
 	DEFINE_MENUBAR("Help on Version 2.7b5..." ,"V",menubar_cb,mo_help_onversion,NULL)
@@ -1642,7 +1642,7 @@ char buf[BUFSIZ];
 	DEFINE_MENUBAR("Mail Tech Support..." ,"M",menubar_cb,mo_techsupport,NULL)
 #ifndef PRERELEASE
 	SPACER()
-	DEFINE_MENUBAR("Comment Card..." ,"C",menubar_cb,mo_cc,NULL)
+	DEFINE_MENUBAR("Tarjeta de comentarios..." ,"C",menubar_cb,mo_cc,NULL)
 #endif
 	NULL_MENUBAR()
 
@@ -1695,12 +1695,12 @@ char buf[BUFSIZ];
 
 	/* The Menubar */
 	ALLOC_MENUBAR(menuspec,8)
-	DEFINE_MENUBAR("File" ,"F",NULL,0,file_menuspec)
-	DEFINE_MENUBAR("Options" ,"O",NULL,0,opts_menuspec)
-	DEFINE_MENUBAR("Navigate" ,"N",NULL,0,navi_menuspec)
-	DEFINE_MENUBAR("Annotate" ,"A",NULL,0,anno_menuspec)
-	DEFINE_MENUBAR("News" ,"w",NULL,0,news_menuspec)
-	DEFINE_MENUBAR("Help" ,"H",NULL,0,help_menuspec)
+	DEFINE_MENUBAR("Archivo" ,"F",NULL,0,file_menuspec)
+	DEFINE_MENUBAR("Opciones" ,"O",NULL,0,opts_menuspec)
+	DEFINE_MENUBAR("Navegar" ,"N",NULL,0,navi_menuspec)
+	DEFINE_MENUBAR("Anotar" ,"A",NULL,0,anno_menuspec)
+	DEFINE_MENUBAR("Noticias" ,"w",NULL,0,news_menuspec)
+	DEFINE_MENUBAR("Ayuda" ,"H",NULL,0,help_menuspec)
 	/* Dummy submenu. */
 	NULL_MENUBAR()
 	NULL_MENUBAR()
@@ -1708,12 +1708,12 @@ char buf[BUFSIZ];
 /* ----------------------- simple menubar interface ----------------------- */
 	/* File Menu */
 	ALLOC_MENUBAR(file_simple_menuspec,7)
-	DEFINE_MENUBAR("Clone" ,"C",menubar_cb,mo_clone_window,NULL)
+	DEFINE_MENUBAR("Clonar" ,"C",menubar_cb,mo_clone_window,NULL)
 	SPACER()
 	DEFINE_MENUBAR("Find In Current" ,"I",menubar_cb,mo_search,NULL)
 	SPACER()
-	DEFINE_MENUBAR("Close" ,"W",menubar_cb,mo_close_window,NULL)
-	DEFINE_MENUBAR("Exit Program..." ,"x",menubar_cb,mo_exit_program,NULL)
+	DEFINE_MENUBAR("Cerrar" ,"W",menubar_cb,mo_close_window,NULL)
+	DEFINE_MENUBAR("Salir del programa..." ,"x",menubar_cb,mo_exit_program,NULL)
 	NULL_MENUBAR()
 
 	/* Options Menu */
@@ -1724,7 +1724,7 @@ char buf[BUFSIZ];
 	/* Navigation Menu */
 	ALLOC_MENUBAR(navi_simple_menuspec,12)
 	DEFINE_MENUBAR("Back" ,"B",menubar_cb,mo_back,NULL)
-	DEFINE_MENUBAR("Forward" ,"F",menubar_cb,mo_forward,NULL)
+	DEFINE_MENUBAR("Adelante" ,"F",menubar_cb,mo_forward,NULL)
 	SPACER()
 	DEFINE_MENUBAR("Home Document" ,"D",menubar_cb,mo_home_document,NULL)
 	SPACER()
@@ -1738,18 +1738,18 @@ char buf[BUFSIZ];
 
 	/* Help Menu */
 	ALLOC_MENUBAR(help_simple_menuspec,12)
-	DEFINE_MENUBAR("About..." ,"A",menubar_cb,mo_help_about,NULL)
+	DEFINE_MENUBAR("Acerca de..." ,"A",menubar_cb,mo_help_about,NULL)
 	DEFINE_MENUBAR("Manual..." ,"M",menubar_cb,mo_mosaic_manual,NULL)
 	SPACER()
-	DEFINE_MENUBAR("What's New..." ,"W",menubar_cb,mo_whats_new,NULL)
+	DEFINE_MENUBAR("Novedades..." ,"W",menubar_cb,mo_whats_new,NULL)
 	DEFINE_MENUBAR("Demo..." ,"D",menubar_cb,mo_mosaic_demopage,NULL)
 	SPACER()
 	DEFINE_MENUBAR("Help on Version 2.7b5..." ,"V",menubar_cb,mo_help_onversion,NULL)
-	DEFINE_MENUBAR("On Window..." ,"O",menubar_cb,mo_help_onwindow,NULL)
-	DEFINE_MENUBAR("On FAQ..." ,"F",menubar_cb,mo_help_faq,NULL)
+	DEFINE_MENUBAR("En ventana..." ,"O",menubar_cb,mo_help_onwindow,NULL)
+	DEFINE_MENUBAR("En FAQ..." ,"F",menubar_cb,mo_help_faq,NULL)
 #ifndef PRERELEASE
 	SPACER()
-	DEFINE_MENUBAR("Comment Card..." ,"C",menubar_cb,mo_cc,NULL)
+	DEFINE_MENUBAR("Tarjeta de comentarios..." ,"C",menubar_cb,mo_cc,NULL)
 #endif
 	NULL_MENUBAR()
 
@@ -1760,17 +1760,17 @@ char buf[BUFSIZ];
 	DEFINE_MENUBAR("Audio Annotate..." ,"u",menubar_cb,mo_audio_annotate,NULL)
 #endif
 	SPACER()
-	DEFINE_MENUBAR("Edit This Annotation..." ,"E",menubar_cb,mo_annotate_edit,NULL)
-	DEFINE_MENUBAR("Delete This Annotation..." ,"D",menubar_cb,mo_annotate_delete,NULL)
+	DEFINE_MENUBAR("Editar esta anotacion..." ,"E",menubar_cb,mo_annotate_edit,NULL)
+	DEFINE_MENUBAR("Eliminar esta anotacion..." ,"D",menubar_cb,mo_annotate_delete,NULL)
 	NULL_MENUBAR()
 
 	/* The Simple Menubar */
 	ALLOC_MENUBAR(simple_menuspec,7)
-	DEFINE_MENUBAR("File" ,"F",NULL,0,file_simple_menuspec)
-	DEFINE_MENUBAR("Options" ,"O",NULL,0,opts_simple_menuspec)
+	DEFINE_MENUBAR("Archivo" ,"F",NULL,0,file_simple_menuspec)
+	DEFINE_MENUBAR("Opciones" ,"O",NULL,0,opts_simple_menuspec)
 	DEFINE_MENUBAR("Navigate" ,"N",NULL,0,navi_simple_menuspec)
-	DEFINE_MENUBAR("Annotate" ,"A",NULL,0,anno_simple_menuspec)
-	DEFINE_MENUBAR("Help" ,"H",NULL,0,help_simple_menuspec)
+	DEFINE_MENUBAR("Anotar" ,"A",NULL,0,anno_simple_menuspec)
+	DEFINE_MENUBAR("Ayuda" ,"H",NULL,0,help_simple_menuspec)
 	/* Dummy submenu. */
 	NULL_MENUBAR()
 	NULL_MENUBAR()
