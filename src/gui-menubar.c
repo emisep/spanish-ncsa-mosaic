@@ -782,8 +782,8 @@ XmxCallback (menubar_cb)
       if (cci_event) MoCCISendEventOutput(OPTIONS_CLEAR_GLOBAL_HISTORY);
       XmxSetUniqid (win->id);
       XmxMakeQuestionDialog
-        (win->base, "Are you sure you want to clear the global history?" ,
-         "NCSA Mosaic: Clear Global History" , clear_history_confirm_cb, 1, 0);
+        (win->base, "¿Seguro que usted desea limpiar el histoial global?" ,
+         "NCSA Mosaic: Limpiar historial global" , clear_history_confirm_cb, 1, 0);
       XtManageChild (Xmx_w);
       break;
     case mo_hotlist_postit:
@@ -1048,7 +1048,7 @@ XmxCallback (menubar_cb)
 	break;
       grp = &eptr->anchorHRef[5];
       subscribegroup (grp);
-      sprintf (buf, "%s successfully subscribed", grp);
+      sprintf (buf, "%s suscrito exitosamente", grp);
       HTProgress (buf);
       break;
     case mo_news_sub:
@@ -1063,7 +1063,7 @@ XmxCallback (menubar_cb)
 	break;
       grp = &eptr->anchorHRef[5];
       unsubscribegroup (grp);
-      sprintf (buf, "%s successfully unsubscribed", grp);
+      sprintf (buf, "%s ha dejado de estar suscrito exitosamente", grp);
       HTProgress (buf);
       break;
     case mo_news_unsub:
@@ -1094,7 +1094,7 @@ XmxCallback (menubar_cb)
       if (!NewsGroupS)
 	break;
       markrangeread (NewsGroupS, NewsGroupS->minart, NewsGroupS->maxart);
-      sprintf (buf, "All articles in %s marked read", NewsGroupS->name);
+      sprintf (buf, "Todos los artículos en %s se marcaron como leídos", NewsGroupS->name);
       HTProgress (buf);
       NewsGroupS = NULL;
       /* Return to newsgroup list */
@@ -1208,8 +1208,8 @@ XmxCallback (menubar_cb)
         {
           XmxSetUniqid (win->id);
           XmxMakeQuestionDialog
-            (win->base, "Are you sure you want to delete this annotation?" ,
-             "NCSA Mosaic: Delete Annotation" , delete_annotation_confirm_cb, 1, 0);
+            (win->base, "¿Seguro que usted desea borrar esta anotación?" ,
+             "NCSA Mosaic: Borrar anotación" , delete_annotation_confirm_cb, 1, 0);
           XtManageChild (Xmx_w);
         }
       else
@@ -1487,9 +1487,9 @@ char buf[BUFSIZ];
 
 /* -------------------------- annotation options --------------------------- */
 	ALLOC_OPTIONS(pubpri_opts,4)
-	DEFINE_OPTIONS("Personal Annotation",mo_annotation_private,XmxSet)
-	DEFINE_OPTIONS("Workgroup Annotation",mo_annotation_workgroup,XmxNotSet)
-	DEFINE_OPTIONS("Public Annotation",mo_annotation_public,XmxNotSet)
+	DEFINE_OPTIONS("Anotación personal",mo_annotation_private,XmxSet)
+	DEFINE_OPTIONS("Anotación de trabajo en grupo",mo_annotation_workgroup,XmxNotSet)
+	DEFINE_OPTIONS("Anotación pública",mo_annotation_public,XmxNotSet)
 	NULL_OPTIONS()
 
 /* ----------------------- full menubar interface -------------------------- */
@@ -1501,13 +1501,13 @@ char buf[BUFSIZ];
 	DEFINE_MENUBAR("Abrir URL..." ,"O",menubar_cb,mo_open_document,NULL)
 	DEFINE_MENUBAR("Abrir local..." ,"L",menubar_cb,mo_open_local_document,NULL)
 	SPACER()
-	DEFINE_MENUBAR("Reload Current" ,"R",menubar_cb,mo_reload_document,NULL)
-	DEFINE_MENUBAR("Reload Images" ,"a",menubar_cb,mo_reload_document_and_images,NULL)
-	DEFINE_MENUBAR("Refresh Current" ,"f",menubar_cb,mo_refresh_document,NULL)
+	DEFINE_MENUBAR("Recargar actual" ,"R",menubar_cb,mo_reload_document,NULL)
+	DEFINE_MENUBAR("Recargar imágenes" ,"a",menubar_cb,mo_reload_document_and_images,NULL)
+	DEFINE_MENUBAR("Refrescar actual" ,"f",menubar_cb,mo_refresh_document,NULL)
 	SPACER()
 	DEFINE_MENUBAR("Find In Current" ,"I",menubar_cb,mo_search,NULL)
-	DEFINE_MENUBAR("View Source..." ,"V",menubar_cb,mo_document_source,NULL)
-	DEFINE_MENUBAR("Edit Source..." ,"E",menubar_cb,mo_document_edit,NULL)
+	DEFINE_MENUBAR("Ver código..." ,"V",menubar_cb,mo_document_source,NULL)
+	DEFINE_MENUBAR("Editar código..." ,"E",menubar_cb,mo_document_edit,NULL)
 	SPACER()
 	DEFINE_MENUBAR("Guardar como..." ,"S",menubar_cb,mo_save_document,NULL)
 	DEFINE_MENUBAR("Imprimir..." ,"P",menubar_cb,mo_print_document,NULL)
@@ -1533,8 +1533,8 @@ char buf[BUFSIZ];
 	DEFINE_MENUBAR("Proxy List..." ,"0",menubar_cb,mo_proxy,NULL)
 	DEFINE_MENUBAR("No Proxy List..." ,"1",menubar_cb,mo_no_proxy,NULL)
 	SPACER()
-	DEFINE_MENUBAR("Close" ,"W",menubar_cb,mo_close_window,NULL)
-	DEFINE_MENUBAR("Exit Program..." ,"x",menubar_cb,mo_exit_program,NULL)
+	DEFINE_MENUBAR("Cerrar" ,"W",menubar_cb,mo_close_window,NULL)
+	DEFINE_MENUBAR("Salir del programa..." ,"x",menubar_cb,mo_exit_program,NULL)
 	NULL_MENUBAR()
 
 	/* Fonts Sub-Menu */
@@ -1599,20 +1599,20 @@ char buf[BUFSIZ];
 	SPACER()
 	DEFINE_MENUBAR("Flush Image Cache" ,"I",menubar_cb,mo_clear_image_cache,NULL)
 	DEFINE_MENUBAR("Flush Password Cache" ,"P",menubar_cb,mo_clear_passwd_cache,NULL)
-	DEFINE_MENUBAR("Clear Global History..." ,"C",menubar_cb,mo_clear_global_history,NULL)
+	DEFINE_MENUBAR("Limpiar historial global..." ,"C",menubar_cb,mo_clear_global_history,NULL)
 	SPACER()
-	DEFINE_MENUBAR("Fonts" ,"F",NULL,0,fnts_menuspec)
+	DEFINE_MENUBAR("Fuentes" ,"F",NULL,0,fnts_menuspec)
 	DEFINE_MENUBAR("Anchor Underlines" ,"A",NULL,0,undr_menuspec)
 	DEFINE_MENUBAR("Agent Spoofs","g",NULL,0,agent_menuspec)
 	NULL_MENUBAR()
 
 	/* Navigation Menu */
 	ALLOC_MENUBAR(navi_menuspec,15)
-	DEFINE_MENUBAR("Back" ,"B",menubar_cb,mo_back,NULL)
-	DEFINE_MENUBAR("Forward" ,"F",menubar_cb,mo_forward,NULL)
+	DEFINE_MENUBAR("Anterior" ,"B",menubar_cb,mo_back,NULL)
+	DEFINE_MENUBAR("Siguiente" ,"F",menubar_cb,mo_forward,NULL)
 	SPACER()
 	DEFINE_MENUBAR("Home Document" ,"D",menubar_cb,mo_home_document,NULL)
-	DEFINE_MENUBAR("Window History..." ,"W",menubar_cb,mo_history_list,NULL)
+	DEFINE_MENUBAR("Historial de ventanas..." ,"W",menubar_cb,mo_history_list,NULL)
 	DEFINE_MENUBAR("Document Links..." ,"L",menubar_cb,mo_links_window,NULL)
 	SPACER()
 	DEFINE_MENUBAR("Hotlist..." ,"H",menubar_cb,mo_hotlist_postit,NULL)
@@ -1648,7 +1648,7 @@ char buf[BUFSIZ];
 
 	/* Annotation Menu */
 	ALLOC_MENUBAR(anno_menuspec,6)
-	DEFINE_MENUBAR("Annotate..." ,"A",menubar_cb,mo_annotate,NULL)
+	DEFINE_MENUBAR("Anotar.." ,"A",menubar_cb,mo_annotate,NULL)
 #ifdef HAVE_AUDIO_ANNOTATIONS
 	DEFINE_MENUBAR("Audio Annotate..." ,"u",menubar_cb,mo_audio_annotate,NULL)
 #endif
@@ -1665,8 +1665,8 @@ char buf[BUFSIZ];
 
 	/* News Menu */
 	ALLOC_MENUBAR(news_menuspec,27)
-	DEFINE_MENUBAR("Next" ,"N",menubar_cb,mo_news_next,NULL)
-	DEFINE_MENUBAR("Prev" ,"P",menubar_cb,mo_news_prev,NULL)
+	DEFINE_MENUBAR("Sig" ,"N",menubar_cb,mo_news_next,NULL)
+	DEFINE_MENUBAR("Ant" ,"P",menubar_cb,mo_news_prev,NULL)
 	DEFINE_MENUBAR("Next Thread" ,"t",menubar_cb,mo_news_nextt,NULL)
 	DEFINE_MENUBAR("Prev Thread" ,"v",menubar_cb,mo_news_prevt,NULL)
 	DEFINE_MENUBAR("Article Index" ,"I",menubar_cb,mo_news_index,NULL)
@@ -1877,7 +1877,7 @@ static void mo_grok_menubar (char *filename)
     {
       if (get_pref_boolean(eSIMPLE_INTERFACE))
         {
-          simple_menuspec[5].namestr = strdup("Documents" );
+          simple_menuspec[5].namestr = strdup("Documentos" );
           simple_menuspec[5].mnemonic = 'D';
           simple_menuspec[5].func = 0;
           simple_menuspec[5].data = 0;
@@ -1885,7 +1885,7 @@ static void mo_grok_menubar (char *filename)
         }
       else
         {
-          menuspec[6].namestr = strdup("Documents" );
+          menuspec[6].namestr = strdup("Documentos" );
           menuspec[6].mnemonic = 'D';
           menuspec[6].func = 0;
           menuspec[6].data = 0;
